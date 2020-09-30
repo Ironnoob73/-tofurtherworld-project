@@ -1,9 +1,9 @@
-# Fabric Example Mod
+# To further world
+运行于Minecraft的fabric mod
 
-## Setup
-
-For setup instructions please see the [fabric wiki page](https://fabricmc.net/wiki/tutorial:setup) that relates to the IDE that you are using.
-
-## License
-
-This template is available under the CC0 license. Feel free to learn from it and incorporate it in your own projects.
+这个仓库是目前正在实际使用的仓库，**尚未完善**，旧的仓库可以在这里找到：https://github.com/Ironnoob73/tofurtherworld-project-1.16.1-
+## 这是什么？
+一个科技向模组，计划添加大量的矿石，大量的建筑及装饰方块，以及新的结构、新的生物群系乃至新~~bug~~维度。
+###### _科技，魔法；怀旧，展望；幻想，现实；拟真，童话......_
+## 目前进度如何？
+因为在制作过程中遇到大量技术性问题，我将会在接下来的一段时间内学习java，这将使得模组更新几乎停止（当然我可能随时更新一点）
