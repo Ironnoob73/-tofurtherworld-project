@@ -44,6 +44,7 @@ public class RefinerSH extends RefinerSHB {
         super(Core.RefinerScreen, Core.RefinerR, syncId, playerInventory, inventory, propertyDelegate);
     }
 }
+
 abstract class RefinerSHB extends RefinerSHA<Inventory> {
     private final Inventory inventory;
     private final PropertyDelegate propertyDelegate;
@@ -63,10 +64,10 @@ abstract class RefinerSHB extends RefinerSHA<Inventory> {
         this.propertyDelegate = propertyDelegate;
         this.world = playerInventory.player.world;
         this.addSlot(new Slot(inventory, 0, 45, 22));
-        this.addSlot(new Slot(inventory, 3, 65, 22));
+        //this.addSlot(new Slot(inventory, 3, 65, 22));
         this.addSlot(new RefinerHighLevelFuelSlot (this, inventory, 1, 55, 54));
         this.addSlot(new FurnaceOutputSlot(playerInventory.player, inventory, 2, 114, 27));
-        this.addSlot(new FurnaceOutputSlot(playerInventory.player, inventory, 4, 114, 47));
+        //this.addSlot(new FurnaceOutputSlot(playerInventory.player, inventory, 4, 114, 47));
 
         int k;
         for(k = 0; k < 3; ++k) {
@@ -115,7 +116,7 @@ abstract class RefinerSHB extends RefinerSHA<Inventory> {
 
     @Environment(EnvType.CLIENT)
     public int getCraftingSlotCount() {
-        return 5;
+        return 3;
     }
 
     public boolean canUse(PlayerEntity player) {
@@ -200,6 +201,7 @@ abstract class RefinerSHB extends RefinerSHA<Inventory> {
         return this.propertyDelegate.get(0) > 0;
     }
 }
+
 class RefinerISFB<C extends Inventory> implements RecipeGridAligner<Integer> {
     protected static final Logger LOGGER = LogManager.getLogger();
     protected final RecipeFinder recipeFinder = new RecipeFinder();
@@ -431,6 +433,7 @@ class RefinerISFB<C extends Inventory> implements RecipeGridAligner<Integer> {
         return i;
     }
 }
+
 abstract class RefinerSHA<C extends Inventory> extends ScreenHandler {
     public RefinerSHA(ScreenHandlerType<?> screenHandlerType, int i) {
         super(screenHandlerType, i);
@@ -662,6 +665,7 @@ class RefinerCraftingSH extends RefinerSHA<CraftingInventory> {
         return 10;
     }
 }
+
 class RefinerHighLevelFuelSlot extends Slot {
     private final RefinerSHB handler;
 

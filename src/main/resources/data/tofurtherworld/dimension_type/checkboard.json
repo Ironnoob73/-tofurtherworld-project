@@ -6,10 +6,10 @@
     "natural":true,
     "piglin_safe":true,
     "respawn_anchor_works":true,
-    "shrunk":false,
     "ultrawarm":false,
     "logical_height":256,
     "ambient_light": 0.1,
     "biome_zoomer":"FuzzyOffsetBiomeZoomer",
+    "coordinate_scale":1,
     "infiniburn":"minecraft:infiniburn_overworld"
 }

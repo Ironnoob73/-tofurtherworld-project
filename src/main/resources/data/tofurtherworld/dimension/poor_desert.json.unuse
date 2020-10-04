@@ -1,5 +1,5 @@
 {
-    "type":"ftfs:poor_desert",
+    "type":"tofurtherworld:poor_desert",
     "generator":{
         "type":"minecraft:noise",
         "seed":1854,

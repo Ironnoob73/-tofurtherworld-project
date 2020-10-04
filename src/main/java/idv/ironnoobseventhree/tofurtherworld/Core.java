@@ -26,6 +26,7 @@ import net.minecraft.recipe.RecipeType;
 import net.minecraft.screen.ScreenHandlerType;
 import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.state.property.Properties;
+import net.minecraft.util.DyeColor;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.Direction;
 import net.minecraft.util.registry.BuiltinRegistries;
@@ -191,6 +192,7 @@ public class Core implements ModInitializer {
     public static final Block TestOre = new Block(FabricBlockSettings.of(Material.STONE).hardness(6.0f).breakByTool(FabricToolTags.PICKAXES, 0));
     public static final Block ForgottenIronOre = new OreBlock(AbstractBlock.Settings.of(Material.STONE).requiresTool().strength(3.0F, 3.0F));
     public static final Block ChiseledIronBlock = new Block(AbstractBlock.Settings.of(Material.METAL, MaterialColor.IRON).requiresTool().strength(10.0F, 6.0F).sounds(BlockSoundGroup.NETHERITE));
+    public static final Block IronPlateBlock = new Block(AbstractBlock.Settings.of(Material.METAL, MaterialColor.IRON).requiresTool().strength(5.0F, 6.0F).sounds(BlockSoundGroup.METAL));
     public static final Block CopperOre = new OreBlock(FabricBlockSettings.of(Material.STONE).hardness(6.0f).breakByTool(FabricToolTags.PICKAXES, 0).requiresTool());
     public static final Block CopperBlock = new Block(AbstractBlock.Settings.of(Material.METAL, MaterialColor.IRON).requiresTool().strength(5.0F, 6.0F).sounds(BlockSoundGroup.METAL));
     public static final Block AluminumOre = new OreBlock(FabricBlockSettings.of(Material.STONE).hardness(6.0f).breakByTool(FabricToolTags.PICKAXES, 3).requiresTool());
@@ -220,6 +222,11 @@ public class Core implements ModInitializer {
     public static final Block WoodenPlanks = new Block(AbstractBlock.Settings.of(Material.WOOD, MaterialColor.WOOD).strength(2.0F, 3.0F).sounds(BlockSoundGroup.WOOD));
     public static final Block PlasticWoodPlanks = new Block(AbstractBlock.Settings.of(Material.STONE, MaterialColor.WOOD).strength(4.0F, 5.0F).sounds(BlockSoundGroup.WOOD));
     //Colour Block
+    public static final Block WhiteCeramicTile = new Block(AbstractBlock.Settings.of(Material.STONE, DyeColor.LIGHT_GRAY).requiresTool().strength(1.8F));
+    public static final Block WhiteWall = new Block(AbstractBlock.Settings.of(Material.STONE, DyeColor.WHITE).requiresTool().strength(1.8F));
+    public static final Block GrayWall = new Block(AbstractBlock.Settings.of(Material.STONE, DyeColor.GRAY).requiresTool().strength(1.8F));
+    public static final Block LightBlueWall = new Block(AbstractBlock.Settings.of(Material.STONE, DyeColor.LIGHT_BLUE).requiresTool().strength(1.8F));
+    public static final Block LightBlueWallMiddle = new Block(AbstractBlock.Settings.of(Material.STONE, DyeColor.LIGHT_BLUE).requiresTool().strength(1.8F));
     public static final Block WhiteLego = new Block(FabricBlockSettings.of(Material.STONE).hardness(6.0f).breakByTool(FabricToolTags.PICKAXES, 0));
     public static final Block OrangeLego = new Block(FabricBlockSettings.of(Material.STONE).hardness(6.0f).breakByTool(FabricToolTags.PICKAXES, 0));
     public static final Block MagentaLego = new Block(FabricBlockSettings.of(Material.STONE).hardness(6.0f).breakByTool(FabricToolTags.PICKAXES, 0));
@@ -300,7 +307,8 @@ public class Core implements ModInitializer {
     //Entity Block
     public static final DrawerBlock Drawer1 = new DrawerBlock(AbstractBlock.Settings.of(Material.STONE).requiresTool().strength(6.0F, 6.0F));
     public static final DrawerBlock Drawer2 = new DrawerBlock(AbstractBlock.Settings.of(Material.STONE).requiresTool().strength(6.0F, 6.0F));
-    public static BlockEntityType<DrawerEntity> Drawere = Registry.register(Registry.BLOCK_ENTITY_TYPE,new Identifier(MODID, "drawer_entity"),BlockEntityType.Builder.create(DrawerEntity::new, Core.Drawer1).build(null));
+    public static BlockEntityType<DrawerEntity> Drawere = Registry.register(Registry.BLOCK_ENTITY_TYPE,new Identifier(MODID, "drawer_entity"),
+            BlockEntityType.Builder.create(DrawerEntity::new, Core.Drawer1).build(null));
     public static final Block ChiseledIronBox = new ChiseledIronBox(AbstractBlock.Settings.of(Material.METAL, MaterialColor.IRON).requiresTool().strength(10.0F, 6.0F).sounds(BlockSoundGroup.NETHERITE));
     public static BlockEntityType<ChiseledIronBoxEntity> CIBE = Registry.register(Registry.BLOCK_ENTITY_TYPE,new Identifier(MODID, "cib_entity"), BlockEntityType.Builder.create(ChiseledIronBoxEntity::new, Core.ChiseledIronBox).build(null));
     public static final Block ForgingTableL1 = new ForgingTableL1(AbstractBlock.Settings.of(Material.STONE).requiresTool().strength(6.0F, 6.0F).sounds(BlockSoundGroup.METAL));
@@ -513,6 +521,8 @@ public class Core implements ModInitializer {
         Registry.register(Registry.ITEM, new Identifier(MODID, "forgotten_iron_ore"), new BlockItem(ForgottenIronOre, new Item.Settings()));
         Registry.register(Registry.BLOCK, new Identifier(MODID, "chiseled_iron_block"), ChiseledIronBlock);
         Registry.register(Registry.ITEM, new Identifier(MODID, "chiseled_iron_block"), new BlockItem(ChiseledIronBlock, new Item.Settings()));
+        Registry.register(Registry.BLOCK, new Identifier(MODID, "iron_plate_block"), IronPlateBlock);
+        Registry.register(Registry.ITEM, new Identifier(MODID, "iron_plate_block"), new BlockItem(IronPlateBlock, new Item.Settings()));
         Registry.register(Registry.BLOCK, new Identifier(MODID, "copper_ore"), CopperOre);
         Registry.register(Registry.ITEM, new Identifier(MODID, "copper_ore"), new BlockItem(CopperOre, new Item.Settings()));
         Registry.register(Registry.BLOCK, new Identifier(MODID, "copper_block"), CopperBlock);
@@ -570,6 +580,16 @@ public class Core implements ModInitializer {
         Registry.register(Registry.BLOCK, new Identifier(MODID, "plastic_wood_planks"), PlasticWoodPlanks);
         Registry.register(Registry.ITEM, new Identifier(MODID, "plastic_wood_planks"), new BlockItem(PlasticWoodPlanks, new Item.Settings()));
         //Colour Block
+        Registry.register(Registry.BLOCK, new Identifier(MODID, "white_ceramic_tile"),WhiteCeramicTile);
+        Registry.register(Registry.ITEM, new Identifier(MODID, "white_ceramic_tile"), new BlockItem(WhiteCeramicTile, new Item.Settings()));
+        Registry.register(Registry.BLOCK, new Identifier(MODID, "white_wall"),WhiteWall);
+        Registry.register(Registry.ITEM, new Identifier(MODID, "white_wall"), new BlockItem(WhiteWall, new Item.Settings()));
+        Registry.register(Registry.BLOCK, new Identifier(MODID, "gray_wall"),GrayWall);
+        Registry.register(Registry.ITEM, new Identifier(MODID, "gray_wall"), new BlockItem(GrayWall, new Item.Settings()));
+        Registry.register(Registry.BLOCK, new Identifier(MODID, "lightblue_wall"),LightBlueWall);
+        Registry.register(Registry.ITEM, new Identifier(MODID, "lightblue_wall"), new BlockItem(LightBlueWall, new Item.Settings()));
+        Registry.register(Registry.BLOCK, new Identifier(MODID, "lightblue_wall_middle"),LightBlueWallMiddle);
+        Registry.register(Registry.ITEM, new Identifier(MODID, "lightblue_wall_middle"), new BlockItem(LightBlueWallMiddle, new Item.Settings()));
         Registry.register(Registry.BLOCK, new Identifier(MODID, "white_lego"),WhiteLego);
         Registry.register(Registry.ITEM, new Identifier(MODID, "white_lego"), new BlockItem(WhiteLego, new Item.Settings()));
         Registry.register(Registry.BLOCK, new Identifier(MODID, "orange_lego"),OrangeLego);
@@ -812,6 +832,7 @@ public class Core implements ModInitializer {
                 stacks.add(new ItemStack(TestOre));
                 stacks.add(new ItemStack(ForgottenIronOre));
                 stacks.add(new ItemStack(ChiseledIronBlock));
+                stacks.add(new ItemStack(IronPlateBlock));
                 stacks.add(new ItemStack(CopperOre));
                 stacks.add(new ItemStack(CopperBlock));
                 stacks.add(new ItemStack(AluminumOre));
@@ -839,6 +860,11 @@ public class Core implements ModInitializer {
                 stacks.add(new ItemStack(OldCommandBlock));
                 stacks.add(new ItemStack(OldReactor));
                 stacks.add(new ItemStack(PrismarineBricksSmooth));
+                stacks.add(new ItemStack(WhiteCeramicTile));
+                stacks.add(new ItemStack(WhiteWall));
+                stacks.add(new ItemStack(GrayWall));
+                stacks.add(new ItemStack(LightBlueWall));
+                stacks.add(new ItemStack(LightBlueWallMiddle));
                 stacks.add(new ItemStack(WhiteLego));
                 stacks.add(new ItemStack(OrangeLego));
                 stacks.add(new ItemStack(MagentaLego));

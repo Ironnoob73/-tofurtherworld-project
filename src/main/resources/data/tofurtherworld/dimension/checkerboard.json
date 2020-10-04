@@ -1,5 +1,5 @@
 {
-    "type":"ftfs:checkboard",
+    "type":"tofurtherworld:checkboard",
     "generator":{
         "type":"minecraft:noise",
         "seed":1854,
