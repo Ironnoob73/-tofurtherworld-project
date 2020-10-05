@@ -1,5 +1,7 @@
 package idv.ironnoobseventhree.tofurtherworld;
 
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Maps;
 import idv.ironnoobseventhree.tofurtherworld.biome.BiomeMain;
 import idv.ironnoobseventhree.tofurtherworld.block.*;
 import idv.ironnoobseventhree.tofurtherworld.block.forging.ForgingTableL1;
@@ -40,6 +42,7 @@ import net.minecraft.world.gen.feature.ConfiguredFeature;
 import net.minecraft.world.gen.feature.Feature;
 import net.minecraft.world.gen.feature.OreFeatureConfig;
 
+import java.util.Map;
 import java.util.function.ToIntFunction;
 
 public class Core implements ModInitializer {
@@ -341,6 +344,12 @@ public class Core implements ModInitializer {
     private static ToIntFunction<BlockState> createLightLevelFromBlockState(int litLevel) {
         return (blockState) -> (Boolean)blockState.get(Properties.LIT) ? litLevel : 0;
     }
+    /*public static void stripableBlock(Block log, Block strippedblock) {
+        Map<Block, Block> effectiveBlocksSet = Maps.newHashMap(AxeModel.STRIPPBLOCK);
+        effectiveBlocksSet.put(log, strippedblock);
+        AxeModel.STRIPPBLOCK = ImmutableMap.copyOf(effectiveBlocksSet);
+    }*/
+
     //Nature Block
     public static final Block AppleBlock = new Facing(AbstractBlock.Settings.of(Material.GOURD, MaterialColor.RED).strength(1.0F).sounds(BlockSoundGroup.WART_BLOCK));
     public static final Block IceBirchSapling = new SaplingMain(new IceBirch(), AbstractBlock.Settings.of(Material.PLANT).noCollision().ticksRandomly().breakInstantly().sounds(BlockSoundGroup.GRASS));
