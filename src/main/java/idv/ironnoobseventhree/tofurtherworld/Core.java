@@ -345,14 +345,15 @@ public class Core implements ModInitializer {
         return (blockState) -> (Boolean)blockState.get(Properties.LIT) ? litLevel : 0;
     }
     /*public static void stripableBlock(Block log, Block strippedblock) {
-        Map<Block, Block> effectiveBlocksSet = Maps.newHashMap(AxeModel.STRIPPBLOCK);
+        Map<Block, Block> effectiveBlocksSet = Maps.newHashMap(AxeItem.STRIPPED_BLOCKS);
         effectiveBlocksSet.put(log, strippedblock);
-        AxeModel.STRIPPBLOCK = ImmutableMap.copyOf(effectiveBlocksSet);
+        AxeItem.STRIPPED_BLOCKS = ImmutableMap.copyOf(effectiveBlocksSet);
     }*/
 
     //Nature Block
     public static final Block AppleBlock = new Facing(AbstractBlock.Settings.of(Material.GOURD, MaterialColor.RED).strength(1.0F).sounds(BlockSoundGroup.WART_BLOCK));
     public static final Block IceBirchSapling = new SaplingMain(new IceBirch(), AbstractBlock.Settings.of(Material.PLANT).noCollision().ticksRandomly().breakInstantly().sounds(BlockSoundGroup.GRASS));
+    public static final Block PottedIceBirchSapling = new FlowerPotBlock(IceBirchSapling, AbstractBlock.Settings.of(Material.SUPPORTED).breakInstantly().nonOpaque());
     public static final Block IceBirchLog = createLogBlock(MaterialColor.ICE, MaterialColor.QUARTZ);
     public static final Block IceBirchLeaves = createLeavesBlock();
     public static final Block IceBirchPlanks = new Block(AbstractBlock.Settings.of(Material.WOOD, MaterialColor.ICE).strength(2.0F, 3.0F).sounds(BlockSoundGroup.WOOD));
@@ -744,6 +745,7 @@ public class Core implements ModInitializer {
         Registry.register(Registry.ITEM, new Identifier(MODID, "apple_block"), new BlockItem(AppleBlock, new Item.Settings()));
         Registry.register(Registry.BLOCK, new Identifier(MODID, "icebirch_sapling"), IceBirchSapling);
         Registry.register(Registry.ITEM, new Identifier(MODID, "icebirch_sapling"), new BlockItem(IceBirchSapling, new Item.Settings()));
+        Registry.register(Registry.BLOCK, new Identifier(MODID, "potted_icebirch_sapling"), PottedIceBirchSapling);
         Registry.register(Registry.BLOCK, new Identifier(MODID, "icebirch_log"), IceBirchLog);
         Registry.register(Registry.ITEM, new Identifier(MODID, "icebirch_log"), new BlockItem(IceBirchLog, new Item.Settings()));
         Registry.register(Registry.BLOCK, new Identifier(MODID, "icebirch_leaves"), IceBirchLeaves);

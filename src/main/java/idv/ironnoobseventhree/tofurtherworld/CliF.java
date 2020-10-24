@@ -55,6 +55,7 @@ public class CliF implements net.fabricmc.api.ClientModInitializer{
         BlockRenderLayerMap.INSTANCE.putBlock(Core.AluminumDoor, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(Core.CopperDoor, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(Core.WoodenSieve, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(Core.PottedIceBirchSapling, RenderLayer.getCutout());
         //Gui
         ScreenRegistry.register(Core.ForgingTableL1Screen, ForgingTableL1Inventory::new);
         ScreenRegistry.register(Core.GrinderScreen, GrinderInventory::new);
